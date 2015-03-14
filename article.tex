@@ -25,6 +25,7 @@
 \usepackage{url}
 %\usepackage{verbatim}
 \usepackage{fancyvrb}
+\usepackage{titling}
 %\usepackage{moreverb}
 %\usepackage{listings}
 %\usepackage{wrapfig}
@@ -36,6 +37,7 @@
 %\usepackage{makeidx}
 \usepackage{tabularx}
 
+\usepackage{lipsum}
 
 \geometry{top=3cm, bottom=2.5cm, left=2cm, right=2cm}
 \setcounter{tocdepth}{3}
@@ -46,10 +48,30 @@
 \author{Dralagen}
 \date{\today}
 
+\pretitle{\begin{center}%
+\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % 
+\rule{\textwidth}{0.4pt}\par\Huge}
+\posttitle{\par\vspace*{-0.6\baselineskip}%
+\rule{0.3\textwidth}{0.2pt}%
+\vspace*{-0.5\baselineskip}%
+\end{center}}
+
+\preauthor{\begin{center}
+\LARGE \lineskip 0.5em%
+\begin{tabular}[t]{c}}
+\postauthor{\end{tabular}\par\end{center}}
+
+\predate{\begin{center}\large}
+\postdate{\par%
+\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}%
+\vspace*{3.2pt} %
+\rule{\textwidth}{1.6pt}%
+\vspace*{\baselineskip}\end{center}}
+
 \makeatletter
-\let\docstitle\@title
-\let\docsauthor\@author
-\let\docsdate\@date
+\let\doctitle\@title
+\let\docauthor\@author
+\let\docdate\@date
 \makeatother
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -57,10 +79,18 @@
 \pagestyle{fancy}
 \fancyhead{}
 \fancyfoot{}
-\lhead{\docauthor}
-\rhead{\doctitle}
-\rfoot{\thepage/\pageref{LastPage}}
-\lfoot{}
+\fancyhead[L]{\leftmark} \setlength{\headheight}{15pt}
+\fancyhead[R]{\doctitle}
+\fancyfoot[L]{\docauthor}
+\fancyfoot[R]{\thepage/\pageref{LastPage}}
+
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[R]{\thepage/\pageref{LastPage}}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0.5pt}
+}
+
 \renewcommand{\footrulewidth}{0.5pt}
 \renewcommand{\headrulewidth}{0.5pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -111,5 +141,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-
+\maketitle
+\lipsum
 \end{document}
