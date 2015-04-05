@@ -1,17 +1,41 @@
 \documentclass{beamer}
- 
-\usepackage[utf8x]{inputenc} 
+
+\usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{colortbl}
 \usepackage[frenchb]{babel}
 \usepackage{array}
- 
-\usetheme{Boadilla}
-\usecolortheme{seahorse}
-\useoutertheme{shadow}
-\setbeamertemplate{navigation symbols}{}
+
+\mode<presentation>
+{
+  \definecolor{mainColor}{RGB}{0,20,120}
+
+  \usetheme{Boadilla}
+  \usecolortheme{seahorse}
+  %\usecolortheme{beaver}
+  \useoutertheme{shadow}
+
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+
+  % remove toc in header
+  \setbeamertemplate{headline}[default]
+
+
+  \setbeamercolor{structure}{fg=mainColor}
+
+  \setbeamercolor{title}{fg=structure.fg!80!black}
+
+  \setbeamercolor{palette primary}{use=structure,fg=structure.fg!75!black}
+  \setbeamercolor{palette secondary}{use=structure,fg=structure.fg!75!black}
+  \setbeamercolor{palette tertiary}{use=structure,fg=structure.fg!75!black}
+  \setbeamercolor{palette quaternary}{fg=structure.fg!75!black}
+
+  \setbeamercolor{section in toc}{fg=structure.fg!60!black}
+  %\setbeamercolor{subsection in toc}{fg=structure.fg!80}
+}
 
 \setbeamertemplate{footline}
 {
@@ -30,19 +54,19 @@
 }
 
 \title{Titre de la présentation}
-\author{Dralagen} 				
+\author{Dralagen}
 \date{\today}
 
 \begin{document}
- 
+
 \begin{frame}
 	\maketitle
-\end{frame} 
+\end{frame}
 
 \begin{frame}
   \frametitle{titre de la frame 1}
-	\begin{alertblock}{titre de alertblock} 
-    contenue de l'alert block.  
+	\begin{alertblock}{titre de alertblock}
+    contenue de l'alert block.
   \end{alertblock}
   \begin{block}{titre de block}
      contenue du block.
@@ -53,3 +77,4 @@
 \end{frame}
 
 \end{document}
+
