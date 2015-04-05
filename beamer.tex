@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[12pt]{beamer}
 
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -7,6 +7,7 @@
 \usepackage{colortbl}
 \usepackage[frenchb]{babel}
 \usepackage{array}
+\usepackage{url}
 
 \mode<presentation>
 {
@@ -57,6 +58,9 @@
 \author{Dralagen}
 \date{\today}
 
+% new section with frame contains the table of contents
+\newcommand{\newsection}[1]{\section{#1}\begin{frame}\tableofcontents[currentsection,hideallsubsections]\end{frame}}
+
 \begin{document}
 
 \begin{frame}
@@ -64,16 +68,34 @@
 \end{frame}
 
 \begin{frame}
+	\tableofcontents
+\end{frame}
+
+\newsection{Block exemple}
+\begin{frame}
   \frametitle{titre de la frame 1}
-	\begin{alertblock}{titre de alertblock}
+  
+  \begin{alertblock}{titre de alertblock}<1->
     contenue de l'alert block.
   \end{alertblock}
-  \begin{block}{titre de block}
+  \begin{block}{titre de block}<2->
      contenue du block.
   \end{block}
-  \begin{exampleblock}{titre de exampleblock}
+  \begin{exampleblock}{titre de exampleblock}<3->
     contenue de l'example block
   \end{exampleblock}
+\end{frame}
+
+\newsection{otherExemple}
+\begin{frame}
+	\frametitle{animation itemize}
+	\begin{itemize}[<+->]
+		\item item 1
+		\item item 2
+		\item item 3
+		\item<3-> item 4
+		\item item 5
+	\end{itemize}
 \end{frame}
 
 \end{document}
