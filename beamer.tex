@@ -1,7 +1,12 @@
+\RequirePackage{pdf14}
+% option :
+% - handout disable delay to eco-print
 \documentclass[12pt]{beamer}
+
 
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{pgfpages}
 \usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{colortbl}
@@ -18,13 +23,21 @@
   %\usecolortheme{beaver}
   \useoutertheme{shadow}
 
-  \setbeamertemplate{navigation symbols}{}
+  \beamertemplatenavigationsymbolsempty
   \setbeamertemplate{caption}[numbered]
 
   % remove toc in header
   \setbeamertemplate{headline}[default]
 
+  % show notes
+  %\setbeameroption{show notes}
+  % show only notes
+  %\setbeameroption{show only notes}
+  % show notes on dualscreen
+  %\setbeameroption{show notes on second screen=right}
 
+
+  %% color %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \setbeamercolor{structure}{fg=mainColor}
 
   \setbeamercolor{title}{fg=structure.fg!80!black}
@@ -36,6 +49,7 @@
 
   \setbeamercolor{section in toc}{fg=structure.fg!60!black}
   %\setbeamercolor{subsection in toc}{fg=structure.fg!80}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }
 
 \setbeamertemplate{footline}
@@ -58,8 +72,21 @@
 \author{Dralagen}
 \date{\today}
 
-% new section with frame contains the table of contents
-\newcommand{\newsection}[1]{\section{#1}\begin{frame}\tableofcontents[currentsection,hideallsubsections]\end{frame}}
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}
+%    \frametitle{Table of Contents}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
 
 \begin{document}
 
@@ -71,10 +98,12 @@
 	\tableofcontents
 \end{frame}
 
-\newsection{Block exemple}
+\section{Block exemple}
 \begin{frame}
   \frametitle{titre de la frame 1}
-  
+
+  \note{Exemple of slide with block added one block by slide}
+
   \begin{alertblock}{titre de alertblock}<1->
     contenue de l'alert block.
   \end{alertblock}
@@ -86,16 +115,17 @@
   \end{exampleblock}
 \end{frame}
 
-\newsection{otherExemple}
+\section{otherExemple}
 \begin{frame}
-	\frametitle{animation itemize}
-	\begin{itemize}[<+->]
-		\item item 1
-		\item item 2
-		\item item 3
-		\item<3-> item 4
-		\item item 5
-	\end{itemize}
+  \frametitle{animation itemize}
+  \note{Exemple with itemize and auto add one item by slide expect item 4}
+  \begin{itemize}[<+->]
+    \item item 1
+    \item item 2
+    \item item 3
+    \item<3-> item 4
+    \item item 5
+  \end{itemize}
 \end{frame}
 
 \end{document}
